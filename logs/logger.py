@@ -6,11 +6,14 @@ import time
 class Logger(object):
 
     def __init__(self, logger):
-        """''
-            指定保存日志的文件路径，日志级别，以及调用文件
-            将日志存入到指定的文件中
         """
-        # 创建一个Logger
+        指定保存日志的文件路径，日志级别，调用文件
+        将日志存入到指定的文件中
+        :param logger:
+        """
+
+        # 创建一个logger(记录器)
+        # 日志记录的工作主要由Logger对象来完成。在调用getLogger时要提供Logger的名称（注：多次使用相同名称 来调用getLogger，
         self.logger = logging.getLogger(logger)
         self.logger.setLevel(logging.DEBUG)
 
@@ -18,8 +21,10 @@ class Logger(object):
         rq = time.strftime('%Y%m%d%H%M', time.localtime(time.time()))
         log_path = os.path.dirname(os.path.abspath('.')) + './logs/'
         log_name = log_path + rq + '.log'
+        # 将日志写入磁盘
         fh = logging.FileHandler(log_name)
         fh.setLevel(logging.INFO)
+        fh.setLevel(logging.ERROR)
 
         # 再创建一个handler，用于输出到控制台
         ch = logging.StreamHandler()
@@ -36,4 +41,3 @@ class Logger(object):
 
     def getlog(self):
         return self.logger
-

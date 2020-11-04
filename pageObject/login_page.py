@@ -1,19 +1,20 @@
-from base_page.base_page import BasePage
+
 from selenium.webdriver.common.by import By
+from base_page.base_page import BasePage
 
 
 class LoginPage(BasePage):
 
     login_name = (By.XPATH, "//*[@id='app']/div[2]/div/div[1]/div[2]/div[2]/input")
     login_pwd = (By.XPATH, "//*[@id='app']/div[2]/div/div[1]/div[3]/div/input")
-    login_button = (By.XPATH, '//*[@id="app"]/div[2]/div/div[1]/div[5]/button')
+    login_buttons = (By.XPATH, '//*[@id="app"]/div[2]/div/div[1]/div[5]/button')
 
     def input_username(self, user_name):
-        self.locator(self.login_name).send_keys(user_name)
+        self.find_element_and_wait(self.login_name).send_keys(user_name)
 
     def input_pwd(self, pwd):
-        self.locator(self.login_pwd).send_keys(pwd)
+        self.find_element_and_wait(self.login_pwd).send_keys(pwd)
 
-    def login(self):
-        self.locator(self.login_button).click()
+    def login_button(self):
+        self.find_element_and_wait(self.login_buttons).click()
 
