@@ -12,9 +12,6 @@ logger = Logger(logger="BasePage").getlog()
 
 
 class BasePage(object):
-    # url = 'http://ymhtml.lecoding.cn/#/'
-    # page_flag_xpath = "//*[@class='el-button el-button--primary']"
-    # page_flag_keyword = '立即发布'
 
     # 构造函数
     def __init__(self,url, browser_type):
@@ -57,20 +54,6 @@ class BasePage(object):
     def visit(self, url):
         self.driver.get(url)
 
-    # 获取当前页面
-    def open_and_check(self):
-        self.driver.get(self.url)
-        return self.check_if_page_opened()
-
-    # 检查页面元素
-    def check_if_page_opened(self):
-        page_element = self.driver.find_element_by_xpath(self.page_flag_xpath)
-        act_keyword = page_element.text
-
-        if self.page_flag_keyword == act_keyword:
-            logger.info('判断页面断言： 测试通过')
-        else:
-            logger.info('判断页面断言： 测试不通过')
 
     # 保存图片
     def get_windows_img(self):
@@ -86,11 +69,3 @@ class BasePage(object):
         except NameError as e:
             logger.error("Failed to take screenshot! %s" % e)
             self.get_windows_img()
-
-    # 刷新页面
-    def refresh_browser(self):
-        try:
-            self.driver.refresh()
-            logger.info('刷新页面')
-        except Exception as e:
-            logger.info("Exception found", format(e))
