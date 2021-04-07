@@ -1,0 +1,6 @@
+1617784383344	mozrunner::runner	INFO	Running command: "D:\\Firefox火狐浏览器\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Windows\\Temp\\rust_mozprofile.my1gVdwJymyS"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1617784393009	Marionette	INFO	Listening on port 61391
+1617784393315	Marionette	WARN	TLS certificate errors will be ignored for this session
+1617784398304	Marionette	INFO	Stopped listening on port 61391
