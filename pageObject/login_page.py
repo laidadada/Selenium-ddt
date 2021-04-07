@@ -9,6 +9,7 @@ class LoginPage(BasePage):
     login_pwd = (By.XPATH, "//*[@id='app']/div[2]/div/div[1]/div[3]/div/input")
     login_buttons = (By.XPATH, '//*[@id="app"]/div[2]/div/div[1]/div[5]/button')
 
+
     def input_username(self, user_name):
         self.find_element_and_wait(self.login_name).send_keys(user_name)
 

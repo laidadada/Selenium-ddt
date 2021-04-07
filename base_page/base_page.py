@@ -4,21 +4,34 @@ import os
 import time
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
-
 from logs.logger import Logger
+from selenium import webdriver
 
 # 创建一个日志实例
 logger = Logger(logger="BasePage").getlog()
 
 
 class BasePage(object):
-    url = 'http://ymhtml.lecoding.cn/#/'
-    page_flag_xpath = "//*[@class='el-button el-button--primary']"
-    page_flag_keyword = '立即发布'
+    # url = 'http://ymhtml.lecoding.cn/#/'
+    # page_flag_xpath = "//*[@class='el-button el-button--primary']"
+    # page_flag_keyword = '立即发布'
 
     # 构造函数
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self,url, browser_type):
+        self.driver = self.open_browser(browser_type)
+        self.driver.get(url)
+
+
+    # 调用浏览器
+    def open_browser(self, browser_type):
+        if browser_type == 'chrome':
+            self.driver = webdriver.Chrome()
+            return self.driver
+        elif browser_type == 'firefox':
+            self.driver = webdriver.Firefox()
+            return self.driver
+        else:
+            print('type error')
 
     # 元素定位
     def find_element_and_wait(self, locator):
@@ -81,5 +94,3 @@ class BasePage(object):
             logger.info('刷新页面')
         except Exception as e:
             logger.info("Exception found", format(e))
-
-

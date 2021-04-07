@@ -3,7 +3,7 @@ from time import sleep
 
 from ddt import ddt, data, unpack
 from pageObject.project_page import ProjectPage
-from test_case.test_login import TestLogin
+from test_case.logincases.test_login import TestLogin
 
 
 @ddt
@@ -16,7 +16,6 @@ class TestPorject(unittest.TestCase):
     @data(['test', 'test_description', '123456', '2020-11-05', '2020-11-06'])
     @unpack
     def test_enter_my_project_and_creat_task(self, name, description, spend, start, end):
-
         self.empact = ProjectPage(self.driver)
         self.empact.input_Personal()
         self.empact.input_my_project()
@@ -34,6 +33,7 @@ class TestPorject(unittest.TestCase):
         # self.empact.send_start_data(end)
         self.empact.input_publish()
         sleep(5)
+
 
 if __name__ == '__main__':
     unittest.main()
