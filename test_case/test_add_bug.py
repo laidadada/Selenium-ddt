@@ -1,9 +1,8 @@
 import unittest
-from time import sleep
 
 from ddt import ddt, data, unpack
 from pageObject.bug_page import BugPage
-from test_case.public_login import Login
+from config.public_login import Login
 
 
 @ddt

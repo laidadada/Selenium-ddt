@@ -18,4 +18,3 @@ class LoginPage(BasePage):
 
     def login_button(self):
         self.find_element_and_wait(self.login_buttons).click()
-

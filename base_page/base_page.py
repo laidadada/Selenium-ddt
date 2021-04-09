@@ -31,19 +31,19 @@ class BasePage(object):
             print('type error')
 
     # 元素定位
-    def find_element_and_wait(self, locator):
+    def find_element_and_wait(self, locator, doc=''):
         """
         :param locator: 元组形式(By.ID,"id")
         :return: 返回element
         """
         element = None
+        logger.info('{0},获取页面元素属性:{1}'.format(doc, locator))
         try:
             element = WebDriverWait(self.driver, 30).until(lambda driver: self.driver.find_element(*locator))
         except TimeoutException:
             # 后期改为logger
-            logger.error(f"寻找{locator}元素时间超时")
+            logger.info('{0},页面元素的属性获取 失败！！！'.format(doc))
             self.get_windows_img()
-            # print("寻找元素时间超时")
         return element
 
     # 关闭
